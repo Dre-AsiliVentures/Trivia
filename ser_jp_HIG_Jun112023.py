@@ -21,14 +21,14 @@ for chapter in chapters:
     
     # List all the questions for the chapter
     for index, question in chapter_questions.iterrows():
-        st.subheader(f"Q{index+1}: {question['Question']}")
+        st.subheader(f"Q{index+1}: {df['Question']}")
         
         # Display the options as radio buttons
         choice = st.radio("Choose an option:",
-                          (question['Option A'], question['Option B'], question['Option C'], question['Option D']))
+                          (df['Option A'], df['Option B'], df['Option C'], df['Option D']))
         
         # Check if the selected option matches the correct answer
-        if choice == question['Correct Answer']:
+        if choice == df['Correct Answer']:
             st.write("Correct!")
             # Update the score accordingly
             # Update the score accordingly
@@ -39,11 +39,11 @@ for chapter in chapters:
         
         # Add an option to choose the word hint
         if st.button("Word Hint"):
-            st.write(f"Hint: {question['Word Hint']}")
+            st.write(f"Hint: {df['Word Hint']}")
         
         # Add an option to choose the time hint
         if st.button("Time Hint"):
-            st.write(f"Hint: {question['Time Hint']}")
+            st.write(f"Hint: {df['Time Hint']}")
         
         st.write("---")
 
