@@ -4,6 +4,7 @@ Joseph Prince: There is Hope in the Grace of God | Praise on TBN
 import streamlit as st
 import pandas as pd
 
+st.write(" Trivia: Sermon by Joseph Prince: There is Hope in the Grace of God")
 # Load the Excel file
 #df = pd.read_excel('folder/text.xlsx')
 df = pd.read_excel('https://asiliventures.com/wp-content/uploads/2023/06/JosephPrince_There_is_Hope_in_God.xlsx')
