@@ -22,6 +22,7 @@ for index, row in df.iterrows():
         chapter = row['Chapter']
         st.write(f"**Chapter {chapter}:**")
     else:
+        question_number = index + 1  # Adjust question number
         st.write(f"**Question {index+1}:** {question}")
         # Display options
         option = st.radio("Select an option:", options=[row['Option A'], row['Option B'], row['Option C'], row['Option D']])
@@ -39,6 +40,7 @@ for index, row in df.iterrows():
                 total_score += 1
             else:
                 st.write("Incorrect.")
+                total_score=total_score
 
     st.write("---")
 
