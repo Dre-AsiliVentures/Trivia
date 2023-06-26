@@ -42,16 +42,17 @@ for index, row in df.iterrows():
                 st.write("Correct!")
                 #total_score += 1
                 correct_answers.append(question_number)
-                total_score=len(correct_answers)
+                #total_score=len(correct_answers)
             else:
                 st.write("Incorrect.")
                 total_score=total_score
                 incorrect_answers.append(question_number)
-                total_score=len(correct_answers)
+                #total_score=len(correct_answers)
             
 
     st.write("---")
 # Display total quiz score
+total_score=len(correct_answers)
 st.write(f"Total Score: {total_score}/{len(df)}")
 # Display questions answered correctly
 if correct_answers:
