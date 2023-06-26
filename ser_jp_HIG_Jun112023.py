@@ -52,6 +52,9 @@ for index, row in df.iterrows():
             else:
                 st.write("Incorrect.")
                 st.session_state[question_result_key] = "Incorrect"
+         # Display result
+        if st.session_state[question_result_key] is not None:
+            st.write(st.session_state[question_result_key])
             
 
     st.write("---")
