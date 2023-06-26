@@ -15,7 +15,9 @@ df = pd.read_excel(url)
 df.fillna("", inplace=True)
 
 # Initialize the score and selected options list
-total_score = 0
+# Initialize the score and selected options list
+if "total_score" not in st.session_state:
+    st.session_state["total_score"] = 0
 question_results = {}
 # Display each question
 for index, row in df.iterrows():
@@ -47,6 +49,7 @@ for index, row in df.iterrows():
                 st.write("Correct!")
                 total_score += 1
                 st.session_state[question_result_key] = "Correct"
+                st.session_state["total_score"] += 1
             else:
                 st.write("Incorrect.")
                 st.session_state[question_result_key] = "Incorrect"
@@ -54,7 +57,7 @@ for index, row in df.iterrows():
 
     st.write("---")
 # Display total quiz score
-st.write(f"Total Score: {total_score}/{len(df)}")
+st.write(f"Total Score: {st.session_state['total_score']}/{len(df)}")
 # Display questions answered correctly
 correct_answers = [i + 1 for i, result in enumerate(st.session_state.values()) if result == "Correct"]
 if correct_answers:
