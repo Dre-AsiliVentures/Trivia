@@ -21,7 +21,9 @@ for index, row in df.iterrows():
     st.write(f"**Question {index+1}:** {row['Question']}")
 
     # Display options
-    option = st.radio("Select an option:", options=[row['Option A'], row['Option B'], row['Option C'], row['Option D']])
+    option = st.radio(f"Select an option for Question {index+1}:", 
+                      options=[row['Option A'], row['Option B'], row['Option C'], row['Option D']],
+                      key=f"option_{index}")
 
     # Display hints
     if st.button("Word Hint", key=f"word_hint_{index}"):
