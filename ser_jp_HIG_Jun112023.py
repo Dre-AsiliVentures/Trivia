@@ -14,8 +14,10 @@ df = pd.read_excel(url)
 # Replace nan values in options with empty string
 df.fillna("", inplace=True)
 
-# Initialize the score
+# Initialize the score and selected options list
 total_score = 0
+correct_answers = []
+incorrect_answers = []
 # Display each question
 for index, row in df.iterrows():
     question = row['Question']
@@ -39,14 +41,31 @@ for index, row in df.iterrows():
             if option == row['Correct Answer']:
                 st.write("Correct!")
                 total_score += 1
+                correct_answers.append(question_number)
             else:
                 st.write("Incorrect.")
                 total_score=total_score
+                incorrect_answers.append(question_number)
             
 
     st.write("---")
     # Display total quiz score
     st.write(f"Total Score: {total_score}/{len(df)}")
+    # Display questions answered correctly
+if correct_answers:
+    st.write("Questions Answered Correctly:")
+    for question_number in correct_answers:
+        st.write(f"Question {question_number}")
+else:
+    st.write("No questions answered correctly.")
+
+# Display questions answered incorrectly
+if incorrect_answers:
+    st.write("Questions Answered Incorrectly:")
+    for question_number in incorrect_answers:
+        st.write(f"Question {question_number}")
+else:
+    st.write("No questions answered incorrectly.")
 
 
 
