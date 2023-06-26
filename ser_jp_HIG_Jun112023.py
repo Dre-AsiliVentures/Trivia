@@ -4,6 +4,7 @@ Joseph Prince: There is Hope in the Grace of God | Praise on TBN
 import streamlit as st
 import pandas as pd
 import numpy as np
+import random
 
 st.write(" Trivia: Sermon by Joseph Prince: There is Hope in the Grace of God")
 # Load the Excel file
