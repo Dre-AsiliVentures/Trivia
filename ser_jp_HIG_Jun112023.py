@@ -30,7 +30,7 @@ for index, row in df.iterrows():
         random.shuffle(options)
 
         # Display randomized options
-        option = st.radio("Select an option:", options=options)
+        option = st.radio("Select an option:", options=options,key=f"options_{index}")
 
         # Display hints
         if st.button("Word Hint", key=f"word_hint_{index}"):
