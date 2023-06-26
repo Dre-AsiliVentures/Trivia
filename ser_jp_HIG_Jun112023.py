@@ -40,7 +40,7 @@ for index, row in df.iterrows():
         if st.button("Check Answer", key=f"check_answer_{index}"):
             if option == row['Correct Answer']:
                 st.write("Correct!")
-                #total_score += 1
+                total_score += 1
                 correct_answers.append(question_number)
                 #total_score=len(correct_answers)
             else:
@@ -52,23 +52,23 @@ for index, row in df.iterrows():
 
     st.write("---")
 # Display total quiz score
-total_score=len(correct_answers)
+#total_score=len(correct_answers)
 st.write(f"Total Score: {total_score}/{len(df)}")
 # Display questions answered correctly
-if correct_answers:
-    st.write("Questions Answered Correctly:")
-    for question_number in correct_answers:
-        st.write(f"Question {question_number}")
-else:
-    st.write("No questions answered correctly.")
+# if correct_answers:
+#     st.write("Questions Answered Correctly:")
+#     for question_number in correct_answers:
+#         st.write(f"Question {question_number}")
+# else:
+#     st.write("No questions answered correctly.")
 
-# Display questions answered incorrectly
-if incorrect_answers:
-    st.write("Questions Answered Incorrectly:")
-    for question_number in incorrect_answers:
-        st.write(f"Question {question_number}")
-else:
-    st.write("No questions answered incorrectly.")
+# # Display questions answered incorrectly
+# if incorrect_answers:
+#     st.write("Questions Answered Incorrectly:")
+#     for question_number in incorrect_answers:
+#         st.write(f"Question {question_number}")
+# else:
+#     st.write("No questions answered incorrectly.")
 
 
 
