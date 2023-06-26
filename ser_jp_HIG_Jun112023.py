@@ -1,12 +1,9 @@
-"""
-Joseph Prince: There is Hope in the Grace of God | Praise on TBN
-"""
 import streamlit as st
 import pandas as pd
 import numpy as np
 
-
 st.write(" Trivia: Sermon by Joseph Prince: There is Hope in the Grace of God")
+
 # Load the Excel file
 url = "https://asiliventures.com/wp-content/uploads/2023/06/JosephPrince_There_is_Hope_in_God.xlsx"
 df = pd.read_excel(url)
@@ -14,11 +11,10 @@ df = pd.read_excel(url)
 # Replace nan values in options with empty string
 df.fillna("", inplace=True)
 
-# Initialize the score and selected options list
-# Initialize the score and selected options list
+# Initialize the score
 if "total_score" not in st.session_state:
     st.session_state["total_score"] = 0
-question_results = {}
+
 # Display each question
 for index, row in df.iterrows():
     question = row['Question']
@@ -46,20 +42,20 @@ for index, row in df.iterrows():
 
         if check_answer:
             if option == row['Correct Answer']:
-                st.write("Correct!")
-                st.session_state[question_result_key] = "Correct"
                 st.session_state["total_score"] += 1
+                st.session_state[question_result_key] = "Correct"
             else:
-                st.write("Incorrect.")
                 st.session_state[question_result_key] = "Incorrect"
-         # Display result
+
+        # Display result
         if st.session_state[question_result_key] is not None:
             st.write(st.session_state[question_result_key])
-            
 
     st.write("---")
+
 # Display total quiz score
 st.write(f"Total Score: {st.session_state['total_score']}/{len(df)}")
+
 # Display questions answered correctly
 correct_answers = [i + 1 for i, result in enumerate(st.session_state.values()) if result == "Correct"]
 if correct_answers:
@@ -77,11 +73,3 @@ if incorrect_answers:
         st.write(f"Question {question_number}")
 else:
     st.write("No questions answered incorrectly.")
-
-
-
-
-
-
-
-
