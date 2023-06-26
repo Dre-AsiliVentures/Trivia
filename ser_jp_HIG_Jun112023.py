@@ -47,7 +47,6 @@ for index, row in df.iterrows():
         if check_answer:
             if option == row['Correct Answer']:
                 st.write("Correct!")
-                total_score += 1
                 st.session_state[question_result_key] = "Correct"
                 st.session_state["total_score"] += 1
             else:
