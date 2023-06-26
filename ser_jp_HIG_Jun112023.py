@@ -1,12 +1,11 @@
 """
 Joseph Prince: There is Hope in the Grace of God | Praise on TBN
 """
-
-st.write(" Trivia: Sermon by Joseph Prince: There is Hope in the Grace of God")
 import streamlit as st
 import pandas as pd
 import numpy as np
 
+st.write(" Trivia: Sermon by Joseph Prince: There is Hope in the Grace of God")
 # Load the Excel file
 url = "https://asiliventures.com/wp-content/uploads/2023/06/JosephPrince_There_is_Hope_in_God.xlsx"
 df = pd.read_excel(url)
