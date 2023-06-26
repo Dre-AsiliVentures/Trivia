@@ -5,50 +5,37 @@ import streamlit as st
 import pandas as pd
 
 st.write(" Trivia: Sermon by Joseph Prince: There is Hope in the Grace of God")
+
 # Load the Excel file
-df = pd.read_excel('https://asiliventures.com/wp-content/uploads/2023/06/JosephPrince_There_is_Hope_in_God.xlsx')
+url = "https://asiliventures.com/wp-content/uploads/2023/06/JosephPrince_There_is_Hope_in_God.xlsx"
+df = pd.read_excel(url)
 
-# Get unique chapters
-chapters = df['Chapter'].unique()
+# Initialize the score
+total_score = 0
 
-# Initialize score
-score = 0
+# Display each question
+for index, row in df.iterrows():
+    st.write(f"**Question {index+1}:** {row['Question']}")
 
-# Create a dictionary to store the questions and answers for each chapter
-chapter_questions = {}
-for i in range(len(df)):
-  chapter = df.loc[i, "Chapter"]
-  question = df.loc[i, "Question"]
-  answer = df.loc[i, "Correct Answer"]
-  options = [df.loc[i, "Option A"], df.loc[i, "Option B"], df.loc[i, "Option C"], df.loc[i, "Option D"]]
-  chapter_questions[chapter] = {"question": question, "answer": answer, "options": options}
+    # Display options
+    option = st.radio("Select an option:", options=[row['Option A'], row['Option B'], row['Option C'], row['Option D']])
 
-# Replace the nan value in the answer column with a valid value
-df["answer"].fillna("A", inplace=True)
+    # Display hints
+    if st.button("Word Hint"):
+        st.write(f"Word Hint: {row['Word']}")
+    if st.button("Time Hint"):
+        st.write(f"Time Hint: {row['Time Hint']}")
 
-# Create a container for each chapter
-for chapter in chapter_questions:
-  #st.container(chapter, title="Chapter")
-  #st.write(chapter_questions[chapter]["question"])
-  #st.section(chapter)
-  #st.write(chapter_questions[chapter]["question"])
-  st.header(chapter)
-  st.write(chapter_questions[chapter]["question"])
+    # Check answer
+    if st.button("Check Answer"):
+        if option == row['Correct Answer']:
+            st.write("Correct!")
+            total_score += 1
+        else:
+            st.write("Incorrect.")
 
-  # Create radio buttons for the options
-  radio_buttons = st.radio("Select an option:", chapter_questions[chapter]["options"])
+    st.write("---")
 
-  # If the option selected matches the correct answer, update the score
-  if radio_buttons == chapter_questions[chapter]["answer"]:
-    st.write("Correct!")
-  else:
-    st.write("Incorrect. The correct answer is " + chapter_questions[chapter]["answer"])
+# Display total quiz score
+st.write(f"Total Score: {total_score}/{len(df)}")
 
-  # Show the word hint or the time hint
-  if st.button("Word hint"):
-    st.write(chapter_questions[chapter]["Word Hint"])
-  elif st.button("Time hint"):
-    st.write(chapter_questions[chapter]["Time Hint"])
-
-# Display the final score
-st.write(f"Final Score: {score}/{len(df)}")
