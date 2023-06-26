@@ -36,23 +36,27 @@ for index, row in df.iterrows():
             st.write(f"Time Hint: {row['Time Hint']}")
 
         # Check answer
-        if st.button("Check Answer", key=f"check_answer_{index}"):
-            if option == row['Correct Answer']:
+        check_answer = st.button("Check Answer", key=f"check_answer_{index}")
+
+        question_result_key = f"result_{index}"
+        if question_result_key not in st.session_state:
+            st.session_state[question_result_key] = None
+
+        if check_answer:
+            if selected_option == row['Correct Answer']:
                 st.write("Correct!")
                 total_score += 1
-                question_results[question_number] = "Correct"
+                st.session_state[question_result_key] = "Correct"
             else:
                 st.write("Incorrect.")
-                total_score=total_score
-                question_results[question_number] = "Incorrect"
+                st.session_state[question_result_key] = "Incorrect"
             
 
     st.write("---")
 # Display total quiz score
 st.write(f"Total Score: {total_score}/{len(df)}")
-
 # Display questions answered correctly
-correct_answers = [question for question, result in question_results.items() if result == "Correct"]
+correct_answers = [i + 1 for i, result in enumerate(st.session_state.values()) if result == "Correct"]
 if correct_answers:
     st.write("Questions Answered Correctly:")
     for question_number in correct_answers:
@@ -61,13 +65,18 @@ else:
     st.write("No questions answered correctly.")
 
 # Display questions answered incorrectly
-incorrect_answers = [question for question, result in question_results.items() if result == "Incorrect"]
+incorrect_answers = [i + 1 for i, result in enumerate(st.session_state.values()) if result == "Incorrect"]
 if incorrect_answers:
     st.write("Questions Answered Incorrectly:")
     for question_number in incorrect_answers:
         st.write(f"Question {question_number}")
 else:
     st.write("No questions answered incorrectly.")
+
+
+
+
+
 
 
 
