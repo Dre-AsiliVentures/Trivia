@@ -42,7 +42,7 @@ for index, row in df.iterrows():
             else:
                 st.write("Incorrect.")
                 total_score=total_score
-            option[index]=option
+            
 
     st.write("---")
 
