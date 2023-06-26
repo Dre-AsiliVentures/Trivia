@@ -29,7 +29,7 @@ for index, row in df.iterrows():
 
         # Display hints
         if st.button("Word Hint", key=f"word_hint_{index}"):
-            st.write(f"Word Hint: {row['Word']}")
+            st.write(f"Word Hint: {row['Word Hint']}")
         if st.button("Time Hint", key=f"time_hint_{index}"):
             st.write(f"Time Hint: {row['Time Hint']}")
 
