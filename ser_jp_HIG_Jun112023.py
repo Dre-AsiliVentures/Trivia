@@ -23,14 +23,17 @@ for i in range(len(df)):
   options = [df.loc[i, "Option A"], df.loc[i, "Option B"], df.loc[i, "Option C"], df.loc[i, "Option D"]]
   chapter_questions[chapter] = {"question": question, "answer": answer, "options": options}
 
+# Replace the nan value in the answer column with a valid value
+df["answer"].fillna("A", inplace=True)
+
 # Create a container for each chapter
 for chapter in chapter_questions:
   #st.container(chapter, title="Chapter")
   #st.write(chapter_questions[chapter]["question"])
   #st.section(chapter)
   #st.write(chapter_questions[chapter]["question"])
-  #st.header(chapter)
-  #st.write(chapter_questions[chapter]["question"])
+  st.header(chapter)
+  st.write(chapter_questions[chapter]["question"])
 
   # Create radio buttons for the options
   radio_buttons = st.radio("Select an option:", chapter_questions[chapter]["options"])
