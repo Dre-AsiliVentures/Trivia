@@ -4,7 +4,7 @@ Joseph Prince: There is Hope in the Grace of God | Praise on TBN
 import streamlit as st
 import pandas as pd
 import numpy as np
-import random
+
 
 st.write(" Trivia: Sermon by Joseph Prince: There is Hope in the Grace of God")
 # Load the Excel file
@@ -25,12 +25,8 @@ for index, row in df.iterrows():
     else:
         #question_number = index  # Adjust question number
         st.write(f"**Question {index}:** {question}")
-        # Randomize the order of options
-        options = [row['Option A'], row['Option B'], row['Option C'], row['Option D']]
-        random.shuffle(options)
-
-        # Display randomized options
-        option = st.radio("Select an option:", options=options,key=f"options_{index}",index=options.index(options[index]))
+        # Display options
+        option = st.radio("Select an option:", options=[row['Option A'], row['Option B'], row['Option C'], row['Option D']])
 
         # Display hints
         if st.button("Word Hint", key=f"word_hint_{index}"):
