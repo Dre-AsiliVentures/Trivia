@@ -45,7 +45,8 @@ for index, row in df.iterrows():
             
 
     st.write("---")
+    # Display total quiz score
+    st.write(f"Total Score: {total_score}/{len(df)}")
 
-# Display total quiz score
-st.write(f"Total Score: {total_score}/{len(df)}")
+
 
