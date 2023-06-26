@@ -54,7 +54,7 @@ for index, row in df.iterrows():
     st.write("---")
 
 # Display total quiz score
-st.write(f"Total Score: {st.session_state['total_score']}/{len(df)}")
+st.write(f"Total Score: {st.session_state['total_score']}/{len(df)-1}")
 
 # Display questions answered correctly
 # correct_answers = [i + 1 for i, result in enumerate(st.session_state.values()) if result == "Correct"]
