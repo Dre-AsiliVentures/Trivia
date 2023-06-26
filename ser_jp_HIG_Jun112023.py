@@ -57,19 +57,19 @@ for index, row in df.iterrows():
 st.write(f"Total Score: {st.session_state['total_score']}/{len(df)}")
 
 # Display questions answered correctly
-correct_answers = [i + 1 for i, result in enumerate(st.session_state.values()) if result == "Correct"]
-if correct_answers:
-    st.write("Questions Answered Correctly:")
-    for question_number in correct_answers:
-        st.write(f"Question {question_number}")
-else:
-    st.write("No questions answered correctly.")
+# correct_answers = [i + 1 for i, result in enumerate(st.session_state.values()) if result == "Correct"]
+# if correct_answers:
+#     st.write("Questions Answered Correctly:")
+#     for question_number in correct_answers:
+#         st.write(f"Question {question_number}")
+# else:
+#     st.write("No questions answered correctly.")
 
-# Display questions answered incorrectly
-incorrect_answers = [i + 1 for i, result in enumerate(st.session_state.values()) if result == "Incorrect"]
-if incorrect_answers:
-    st.write("Questions Answered Incorrectly:")
-    for question_number in incorrect_answers:
-        st.write(f"Question {question_number}")
-else:
-    st.write("No questions answered incorrectly.")
+# # Display questions answered incorrectly
+# incorrect_answers = [i + 1 for i, result in enumerate(st.session_state.values()) if result == "Incorrect"]
+# if incorrect_answers:
+#     st.write("Questions Answered Incorrectly:")
+#     for question_number in incorrect_answers:
+#         st.write(f"Question {question_number}")
+# else:
+#     st.write("No questions answered incorrectly.")
