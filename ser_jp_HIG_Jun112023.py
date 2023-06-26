@@ -10,6 +10,8 @@ st.write(" Trivia: Sermon by Joseph Prince: There is Hope in the Grace of God")
 url = "https://asiliventures.com/wp-content/uploads/2023/06/JosephPrince_There_is_Hope_in_God.xlsx"
 df = pd.read_excel(url)
 
+# Replace nan values in options with empty string
+df.fillna("", inplace=True)
 # Initialize the score
 total_score = 0
 
