@@ -49,9 +49,9 @@ for index, row in df.iterrows():
             
 
     st.write("---")
-    # Display total quiz score
-    st.write(f"Total Score: {total_score}/{len(df)}")
-    # Display questions answered correctly
+# Display total quiz score
+st.write(f"Total Score: {total_score}/{len(df)}")
+# Display questions answered correctly
 if correct_answers:
     st.write("Questions Answered Correctly:")
     for question_number in correct_answers:
