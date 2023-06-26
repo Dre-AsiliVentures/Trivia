@@ -40,12 +40,14 @@ for index, row in df.iterrows():
         if st.button("Check Answer", key=f"check_answer_{index}"):
             if option == row['Correct Answer']:
                 st.write("Correct!")
-                total_score += 1
+                #total_score += 1
                 correct_answers.append(question_number)
+                total_score=len(correct_answers)
             else:
                 st.write("Incorrect.")
                 total_score=total_score
                 incorrect_answers.append(question_number)
+                total_score=len(correct_answers)
             
 
     st.write("---")
