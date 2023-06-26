@@ -25,7 +25,7 @@ for index, row in df.iterrows():
         chapter = row['Chapter']
         st.write(f"**Chapter {chapter}:**")
     else:
-        #question_number = index  # Adjust question number
+        question_number = index  # Adjust question number
         st.write(f"**Question {index}:** {question}")
         # Display options
         option = st.radio("Select an option:", options=[row['Option A'], row['Option B'], row['Option C'], row['Option D']])
