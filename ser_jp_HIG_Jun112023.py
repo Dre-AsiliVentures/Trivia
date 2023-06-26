@@ -40,7 +40,7 @@ for index, row in df.iterrows():
             if option == row['Correct Answer']:
                 st.write("Correct!")
                 total_score += 1
-                question_results[question_number] = "Correct
+                question_results[question_number] = "Correct"
             else:
                 st.write("Incorrect.")
                 total_score=total_score
