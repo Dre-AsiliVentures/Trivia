@@ -27,8 +27,10 @@ for i in range(len(df)):
 for chapter in chapter_questions:
   #st.container(chapter, title="Chapter")
   #st.write(chapter_questions[chapter]["question"])
-  st.section(chapter)
-  st.write(chapter_questions[chapter]["question"])
+  #st.section(chapter)
+  #st.write(chapter_questions[chapter]["question"])
+  #st.header(chapter)
+  #st.write(chapter_questions[chapter]["question"])
 
   # Create radio buttons for the options
   radio_buttons = st.radio("Select an option:", chapter_questions[chapter]["options"])
